@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Celke</title>
+	<head>
+	<body>
+		<h1>Cadastrar Imagem</h1>
+		<form action="/uper/"method="post" autocomplete="off" class="slides-form margin-bottom-3">
+            {% csrf_token %}
+                        
+          
+			<input type="file" name="imagemn" id="imagem" onchange="previewImagem()"><br><br>
+			<img style="width: 150px; height: 150px;" name = "igor">
+			
+			<br><br>
+			
+			<input type="submit" value="Cadastrar">
+			</form>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script>
+			function previewImagem(){
+				var imagem = document.querySelector('input[name=imagemn]').files[0];
+				var preview = document.querySelector('img[name=igor]');
+				
+				var reader = new FileReader();
+				
+				reader.onloadend = function () {
+					preview.src = reader.result;
+				}
+				
+				if(imagem){
+					reader.readAsDataURL(imagem);
+				}else{
+					preview.src = "";
+				}
+			}
+		</script>
+       
+	</body>
+</html>
